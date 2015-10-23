@@ -20,6 +20,7 @@ AgentInfo* AgentInfo::instance()
     return m_pAgentInfo;
 }
 
+
 AgentInfo::~AgentInfo()
 {
 
