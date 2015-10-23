@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>qml/DelegateItemRect.qml</file>
+        <file>qml/myChatView.qml</file>
+    </qresource>
+</RCC>

@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/app.png</file>
+        <file>res/app_1.png</file>
+        <file>res/app_2.png</file>
+        <file>res/head_0.png</file>
+        <file>res/head_1.png</file>
+        <file>res/head_2.png</file>
+        <file>res/mmdesktop.png</file>
+        <file>res/telephone.png</file>
+        <file>res/telephone_1.png</file>
+        <file>res/wechat.png</file>
+        <file>res/wechat_1.png</file>
+        <file>res/wechat_2.png</file>
+    </qresource>
+</RCC>
