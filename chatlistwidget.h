@@ -9,7 +9,7 @@ class QQuickWidget;
 class UserInfo;
 class QTimer;
 class QMultiMap<QTreeWidgetItem*, QQuickWidget*>;
-class QList<QTreeWidgetItem*>;
+//class QList<QTreeWidgetItem *>;
 
 class ChatListWidget : public QObject
 {

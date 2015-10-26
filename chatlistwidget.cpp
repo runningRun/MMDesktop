@@ -34,7 +34,7 @@ ChatListWidget::ChatListWidget(QWidget *parent)
     //初始化定时器
     this->m_pTimerChangeItemBgColor->setInterval(300);
     connect(this->m_pTimerChangeItemBgColor, SIGNAL(timeout()), this, SLOT(treeWidgetItemBgColorChange()));
-
+    this->m_pTimerChangeItemBgColor->start(300);
 
 }
 
@@ -147,22 +147,63 @@ void ChatListWidget::treeWidgetItemClicked(QTreeWidgetItem *item, int column)
     }
 
     item->setBackgroundColor(0, QColor("transparent"));
+
+    if (this->m_pListHavingNewMsgTwi->contains(item))
+    {
+        this->m_pListHavingNewMsgTwi->removeOne(item);
+    }
 }
 
 void ChatListWidget::currentTreeWidgetItemChanged(QTreeWidgetItem *currentItem, QTreeWidgetItem *previousItem)
 {
-    if (currentItem->parent() != NULL && previousItem->parent() != NULL)
+    if (NULL != previousItem)
     {
-        if (this->m_pListHavingNewMsgTwi)
+        if (currentItem->parent() != NULL && previousItem->parent() != NULL)
         {
-
+            if (this->m_pListHavingNewMsgTwi->contains(currentItem))
+            {
+                this->m_pListHavingNewMsgTwi->removeOne(currentItem);
+            }
+//            this->m_pListHavingNewMsgTwi->append(previousItem);
         }
     }
 }
 
 void ChatListWidget::treeWidgetItemBgColorChange()
 {
-
+    static int currentColorFlag = 0;
+    QTreeWidgetItem* item;
+    int size = this->m_pListHavingNewMsgTwi->size();
+    int i = 0;
+    if (0 == currentColorFlag)
+    {
+//        foreach (item, this->m_pListHavingNewMsgTwi)
+//        {
+//            item->setBackgroundColor(0, QColor("#FFA07A"));
+//        }
+        for (i=0; i<size; ++i)
+        {
+            this->m_pListHavingNewMsgTwi->at(i)->setBackgroundColor(0, QColor("#FFA07A"));
+        }
+        currentColorFlag = 1;
+    }
+    else if (1 == currentColorFlag)
+    {
+        for (i=0; i<size; ++i)
+        {
+            this->m_pListHavingNewMsgTwi->at(i)->setBackgroundColor(0, QColor("green"));
+        }
+        currentColorFlag = 2;
+    }
+    else if (2 == currentColorFlag)
+    {
+        for (i=0; i<size; ++i)
+        {
+            this->m_pListHavingNewMsgTwi->at(i)->setBackgroundColor(0, QColor("transparent"));
+        }
+        currentColorFlag = 0;
+    }
+}
 QQuickWidget* ChatListWidget::createQuickWidget(QWidget *parent)
 {
    QQuickWidget* quickWidget = new QQuickWidget(parent);
@@ -184,7 +225,10 @@ void ChatListWidget::deleteQuickWidget(QTreeWidgetItem *item)
 void ChatListWidget::notifyHavingNewMessage(QTreeWidgetItem *item)
 {
     if (this->m_pCurrentShowQuickWidget != this->m_pMapTWI_QuickWidget->value(item))
+    {
         item->setBackgroundColor(0, QColor("#FFA07A"));
+        this->m_pListHavingNewMsgTwi->append(item);
+    }
 }
 
 ChatListWidget::~ChatListWidget()
