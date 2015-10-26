@@ -5,26 +5,36 @@
 #include <QTreeWidgetItem>
 #include <QUrl>
 #include <QQmlContext>
+#include <QTimer>
+#include <QList>
 
 ChatListWidget::ChatListWidget(QWidget *parent)
 {
     this->m_pChatListTreeWidget = new QTreeWidget(parent);
+    this->m_pMapTWI_QuickWidget = new QMap<QTreeWidgetItem*, QQuickWidget*>();
+    this->m_pTimerChangeItemBgColor = new QTimer(this);
+    this->m_pListHavingNewMsgTwi = new QList<QTreeWidgetItem*>();
+    this->m_pCurrentShowQuickWidget = NULL;
+
+    //初始化ChatListTreeWidget
     this->m_pChatListTreeWidget->setColumnCount(1);
     this->m_pChatListTreeWidget->setHeaderLabel("会话列表");
     this->m_pChatListTreeWidget->setGeometry(QRect(0, 0, 160, 560));
-    this->m_pMapTWI_QuickWidget = new QMap<QTreeWidgetItem*, QQuickWidget*>();
-    this->m_pCurrentShowQuickWidget = NULL;
 
     this->m_ptwiVoice = createTreeWidgetItem(this->m_pChatListTreeWidget,QStringList (QString("语音通话")));
     this->m_ptwiVoice->setIcon(0, QIcon("res/telephone.png"));
-
     this->m_ptwiWeChat = createTreeWidgetItem(this->m_pChatListTreeWidget, QStringList(QString("微信")));
     this->m_ptwiWeChat->setIcon(0, QIcon("res/wechat.png"));
-
     this->m_ptwiApp = createTreeWidgetItem(this->m_pChatListTreeWidget, QStringList(QString("手机APP")));
     this->m_ptwiApp->setIcon(0, QIcon("res/app.png"));
+    connect(this->m_pChatListTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)),
+            this, SLOT(treeWidgetItemClicked(QTreeWidgetItem*,int)));
+    connect(this->m_pChatListTreeWidget, SIGNAL(currentItemChanged(QTreeWidgetItem*,QTreeWidgetItem*)),
+            this, SLOT(currentTreeWidgetItemChanged(QTreeWidgetItem*, QTreeWidgetItem*)));
+    //初始化定时器
+    this->m_pTimerChangeItemBgColor->setInterval(300);
+    connect(this->m_pTimerChangeItemBgColor, SIGNAL(timeout()), this, SLOT(treeWidgetItemBgColorChange()));
 
-    connect(this->m_pChatListTreeWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(treeWidgetItemClicked(QTreeWidgetItem*,int)));
 
 }
 
@@ -138,6 +148,20 @@ void ChatListWidget::treeWidgetItemClicked(QTreeWidgetItem *item, int column)
 
     item->setBackgroundColor(0, QColor("transparent"));
 }
+
+void ChatListWidget::currentTreeWidgetItemChanged(QTreeWidgetItem *currentItem, QTreeWidgetItem *previousItem)
+{
+    if (currentItem->parent() != NULL && previousItem->parent() != NULL)
+    {
+        if (this->m_pListHavingNewMsgTwi)
+        {
+
+        }
+    }
+}
+
+void ChatListWidget::treeWidgetItemBgColorChange()
+{
 
 QQuickWidget* ChatListWidget::createQuickWidget(QWidget *parent)
 {

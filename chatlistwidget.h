@@ -7,7 +7,9 @@ class QTreeWidget;
 class QTreeWidgetItem;
 class QQuickWidget;
 class UserInfo;
+class QTimer;
 class QMultiMap<QTreeWidgetItem*, QQuickWidget*>;
+class QList<QTreeWidgetItem*>;
 
 class ChatListWidget : public QObject
 {
@@ -33,6 +35,8 @@ signals:
     void signalTreeWidgetItemClicked(QTreeWidgetItem* item, int column);
 private slots:
     void treeWidgetItemClicked(QTreeWidgetItem *item, int column);
+    void currentTreeWidgetItemChanged(QTreeWidgetItem* currentItem, QTreeWidgetItem* previousItem);
+    void treeWidgetItemBgColorChange();
 
 private:
     QTreeWidget *m_pChatListTreeWidget;
@@ -40,7 +44,9 @@ private:
     QTreeWidgetItem *m_ptwiWeChat;
     QTreeWidgetItem *m_ptwiApp;
     QQuickWidget* m_pCurrentShowQuickWidget;
+    QTimer* m_pTimerChangeItemBgColor;
     QMap<QTreeWidgetItem*, QQuickWidget*> *m_pMapTWI_QuickWidget;
+    QList<QTreeWidgetItem*>* m_pListHavingNewMsgTwi;
 };
 
 #endif // CHATLIST_H
