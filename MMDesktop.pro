@@ -20,7 +20,14 @@ SOURCES += main.cpp\
     chatlistwidget.cpp \
     mmdesktopapp.cpp \
     agentinfo.cpp \
-    sessionhandle.cpp
+    sessionhandle.cpp \
+    MyButton.cpp \
+    PanoramaWidget.cpp \
+    CustomInfoWidget.cpp \
+    KnowledgeBaseWidget.cpp \
+    CRMWidget.cpp \
+    CstInfoWidget.cpp \
+    HistoryWidget.cpp
 
 HEADERS  += \
     globalxagentocx.h \
@@ -31,7 +38,14 @@ HEADERS  += \
     chatlistwidget.h \
     mmdesktopapp.h \
     agentinfo.h \
-    sessionhandle.h
+    sessionhandle.h \
+    CustomInfoWidget.h \
+    MyButton.h \
+    PanoramaWidget.h \
+    KnowledgeBaseWidget.h \
+    CRMWidget.h \
+    CstInfoWidget.h \
+    HistoryWidget.h
 
 FORMS    += \
     logindialog.ui \

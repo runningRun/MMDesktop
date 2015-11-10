@@ -67,6 +67,24 @@ void GlobalXAgentOCX::chatRetrieve(QString sessionid)
     GlobalXAgentOCX::globalXAgentOCX->dynamicCall("ChatRetrieve(LPCTSTR SessionID)", sessionid);
 }
 
+void GlobalXAgentOCX::answer(QString sessionid)
+{
+    GlobalXAgentOCX::globalXAgentOCX->dynamicCall("Answer(LPCTSTR sessionid)", sessionid);
+}
+void GlobalXAgentOCX::release(QString sessionid)
+{
+    GlobalXAgentOCX::globalXAgentOCX->dynamicCall("Release(LPCTSTR sessionid)", sessionid);
+}
+void GlobalXAgentOCX::hold(QString sessionid)
+{
+    GlobalXAgentOCX::globalXAgentOCX->dynamicCall("Hold(LPCTSTR sessionid)", sessionid);
+}
+
+void GlobalXAgentOCX::retrieve(QString sessionid)
+{
+    GlobalXAgentOCX::globalXAgentOCX->dynamicCall("Retrieve(LPCTSTR sessionid)", sessionid);
+}
+
 QString GlobalXAgentOCX::uploadFile(QString info)
 {
      QString fileName = (GlobalXAgentOCX::globalXAgentOCX->dynamicCall("UploadFile(LPCTSTR info)", info)).toString();

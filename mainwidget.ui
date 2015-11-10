@@ -6,306 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>763</width>
-    <height>584</height>
+    <width>1174</width>
+    <height>749</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>多媒体工作台</string>
   </property>
-  <widget class="QWidget" name="widgetLeftFunctionArea" native="true">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>101</width>
-     <height>561</height>
-    </rect>
-   </property>
-   <widget class="QLabel" name="labelHeadPortrait">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>0</y>
-      <width>54</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="resource.qrc">:/res/head_0.png</pixmap>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="groupBoxVoiceManage">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>335</y>
-      <width>95</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>通话管理</string>
-    </property>
-    <widget class="QPushButton" name="pushButtonHookOff_release">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>摘  机</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonHold_retrive">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>保  持</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonConsult">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>求  助</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBoxLeader">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>450</y>
-      <width>95</width>
-      <height>111</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>班长席</string>
-    </property>
-    <widget class="QPushButton" name="pushButtonMonitor">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>监  听</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonBreak">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>强  拆</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonInsert">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>80</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>强  插</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBoxStateManage">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>248</y>
-      <width>90</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>状态管理</string>
-    </property>
-    <widget class="QPushButton" name="pushButtonReady_NOT">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>50</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>示  忙</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButtonLogin_out">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>75</width>
-       <height>23</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>签  入</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="groupBoxAgentInfo">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>50</y>
-      <width>90</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>个人信息</string>
-    </property>
-    <widget class="QLabel" name="labelAgentID">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>20</y>
-       <width>54</width>
-       <height>12</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>AgentID:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEditAgentID">
-     <property name="geometry">
-      <rect>
-       <x>4</x>
-       <y>40</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="labelAgentName">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>65</y>
-       <width>54</width>
-       <height>12</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>AgentName:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEditAgentName">
-     <property name="geometry">
-      <rect>
-       <x>4</x>
-       <y>83</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="labelAgentGroupID">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>102</y>
-       <width>81</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>AgentGroupID:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEditAgentNameGroupID">
-     <property name="geometry">
-      <rect>
-       <x>4</x>
-       <y>120</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-    <widget class="QLabel" name="labelAgentThisDN">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>140</y>
-       <width>81</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>AgentThisDN:</string>
-     </property>
-    </widget>
-    <widget class="QLineEdit" name="lineEditAgentThisDN">
-     <property name="geometry">
-      <rect>
-       <x>4</x>
-       <y>160</y>
-       <width>81</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </widget>
-  </widget>
+  <property name="windowIcon">
+   <iconset resource="resource.qrc">
+    <normaloff>:/res/mmdesktop.png</normaloff>:/res/mmdesktop.png</iconset>
+  </property>
   <widget class="QWidget" name="widgetChatList" native="true">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>10</y>
+     <x>5</x>
+     <y>90</y>
      <width>161</width>
-     <height>561</height>
+     <height>540</height>
     </rect>
    </property>
    <widget class="QTreeWidget" name="treeWidget">
@@ -314,8 +32,11 @@
       <x>0</x>
       <y>0</y>
       <width>161</width>
-      <height>561</height>
+      <height>540</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
     </property>
     <column>
      <property name="text">
@@ -327,43 +48,679 @@
   <widget class="QWidget" name="widgetChatWidget" native="true">
    <property name="geometry">
     <rect>
-     <x>278</x>
-     <y>9</y>
-     <width>491</width>
-     <height>561</height>
+     <x>170</x>
+     <y>90</y>
+     <width>481</width>
+     <height>540</height>
     </rect>
    </property>
    <widget class="QQuickWidget" name="quickWidget">
     <property name="geometry">
      <rect>
-      <x>-1</x>
-      <y>-1</y>
+      <x>0</x>
+      <y>0</y>
       <width>480</width>
-      <height>560</height>
+      <height>630</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
     </property>
     <property name="resizeMode">
      <enum>QQuickWidget::SizeRootObjectToView</enum>
     </property>
    </widget>
+   <zorder>quickWidget</zorder>
+   <zorder>treeWidget</zorder>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QWidget" name="widgetStatistic" native="true">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>2</width>
-     <height>2</height>
+     <x>219</x>
+     <y>5</y>
+     <width>951</width>
+     <height>80</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout"/>
+   <widget class="QLabel" name="labelLoginDuration">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>10</y>
+      <width>62</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>签入总时长</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelNotReadyDuration">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>10</y>
+      <width>62</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>小休总时长</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelAverageHandleDuration">
+    <property name="geometry">
+     <rect>
+      <x>295</x>
+      <y>10</y>
+      <width>85</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>平均处理总时长</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelIncomeCallCount">
+    <property name="geometry">
+     <rect>
+      <x>463</x>
+      <y>10</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>呼入总量</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelOutCallCount">
+    <property name="geometry">
+     <rect>
+      <x>571</x>
+      <y>10</y>
+      <width>50</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>呼出总量</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelMultimediaInteractiveCount">
+    <property name="geometry">
+     <rect>
+      <x>679</x>
+      <y>10</y>
+      <width>72</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>多媒体交互量</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelQueueCount">
+    <property name="geometry">
+     <rect>
+      <x>809</x>
+      <y>10</y>
+      <width>40</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>排队数</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditLoginDuration">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>10</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00:00:00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditNotReadyDuration">
+    <property name="geometry">
+     <rect>
+      <x>215</x>
+      <y>10</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00:00:00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineAverageHandleDuration">
+    <property name="geometry">
+     <rect>
+      <x>383</x>
+      <y>10</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00:00:00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditIncomeCallCount">
+    <property name="geometry">
+     <rect>
+      <x>516</x>
+      <y>10</y>
+      <width>35</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditOutCallCount">
+    <property name="geometry">
+     <rect>
+      <x>624</x>
+      <y>10</y>
+      <width>35</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditOutCallCount_2">
+    <property name="geometry">
+     <rect>
+      <x>754</x>
+      <y>10</y>
+      <width>35</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditOutCallCount_3">
+    <property name="geometry">
+     <rect>
+      <x>852</x>
+      <y>10</y>
+      <width>35</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonLogin_out">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>签 入</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/agentIn.png</normaloff>:/res/agentIn.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="popupMode">
+     <enum>QToolButton::DelayedPopup</enum>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+    <property name="arrowType">
+     <enum>Qt::NoArrow</enum>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonReady_NOT">
+    <property name="geometry">
+     <rect>
+      <x>85</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>示 忙</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/agentReady.png</normaloff>:/res/agentReady.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonDial">
+    <property name="geometry">
+     <rect>
+      <x>165</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>拨 号</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/dial.png</normaloff>:/res/dial.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonHookOff_release">
+    <property name="geometry">
+     <rect>
+      <x>245</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>摘 机</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/comingCall_1.png</normaloff>:/res/comingCall_1.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonHold_retrive">
+    <property name="geometry">
+     <rect>
+      <x>325</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>保 持</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/holdCall.png</normaloff>:/res/holdCall.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonConsult">
+    <property name="geometry">
+     <rect>
+      <x>405</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>求 助</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/callHelp.png</normaloff>:/res/callHelp.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonMonitor">
+    <property name="geometry">
+     <rect>
+      <x>485</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>监 听</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/callMonitor.png</normaloff>:/res/callMonitor.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonBreak">
+    <property name="geometry">
+     <rect>
+      <x>565</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>强 拆</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/callChai.png</normaloff>:/res/callChai.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="toolButtonInsert">
+    <property name="geometry">
+     <rect>
+      <x>645</x>
+      <y>35</y>
+      <width>75</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>强 插</string>
+    </property>
+    <property name="icon">
+     <iconset resource="resource.qrc">
+      <normaloff>:/res/callCha.png</normaloff>:/res/callCha.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="toolButtonStyle">
+     <enum>Qt::ToolButtonTextBesideIcon</enum>
+    </property>
+    <property name="autoRaise">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
+  <widget class="PanoramaWidget" name="widget" native="true">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>90</y>
+     <width>521</width>
+     <height>541</height>
+    </rect>
+   </property>
+   <zorder>quickWidget</zorder>
+  </widget>
+  <widget class="QWidget" name="widget_2" native="true">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>5</y>
+     <width>200</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="labelHeadPortrait">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>10</y>
+      <width>50</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resource.qrc">:/res/agent.png</pixmap>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>15</y>
+      <width>54</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>坐席工号</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>40</y>
+      <width>54</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>状态时长</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditAgentID_2">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>10</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>2005</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditStateDuration">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>40</y>
+      <width>60</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: &quot;transparent&quot;;</string>
+    </property>
+    <property name="text">
+     <string>00:00:00</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <zorder>widgetChatList</zorder>
+  <zorder>widgetChatWidget</zorder>
+  <zorder>widgetStatistic</zorder>
+  <zorder>widget</zorder>
+  <zorder>widget_2</zorder>
+  <zorder>treeWidget</zorder>
+  <zorder>quickWidget</zorder>
  </widget>
  <customwidgets>
   <customwidget>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
    <header>QQuickWidget</header>
+  </customwidget>
+  <customwidget>
+   <class>PanoramaWidget</class>
+   <extends>QWidget</extends>
+   <header>panoramawidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>

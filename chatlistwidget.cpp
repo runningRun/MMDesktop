@@ -177,10 +177,6 @@ void ChatListWidget::treeWidgetItemBgColorChange()
     int i = 0;
     if (0 == currentColorFlag)
     {
-//        foreach (item, this->m_pListHavingNewMsgTwi)
-//        {
-//            item->setBackgroundColor(0, QColor("#FFA07A"));
-//        }
         for (i=0; i<size; ++i)
         {
             this->m_pListHavingNewMsgTwi->at(i)->setBackgroundColor(0, QColor("#FFA07A"));

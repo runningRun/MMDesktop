@@ -12,5 +12,21 @@
         <file>res/wechat.png</file>
         <file>res/wechat_1.png</file>
         <file>res/wechat_2.png</file>
+        <file>res/agent.png</file>
+        <file>res/agentIn.png</file>
+        <file>res/Linked_In_128px_1123308_easyicon.net.png</file>
+        <file>res/agentOut.png</file>
+        <file>res/agentReady.png</file>
+        <file>res/agentNotready.png</file>
+        <file>res/dial.png</file>
+        <file>res/hangup.png</file>
+        <file>res/hookOff.png</file>
+        <file>res/comingCall.png</file>
+        <file>res/comingCall_1.png</file>
+        <file>res/holdCall.png</file>
+        <file>res/callHelp.png</file>
+        <file>res/callMonitor.png</file>
+        <file>res/callChai.png</file>
+        <file>res/callCha.png</file>
     </qresource>
 </RCC>
