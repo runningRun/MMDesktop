@@ -28,7 +28,7 @@ PanoramaWidget::PanoramaWidget(QWidget *parent) : QWidget(parent)
 void PanoramaWidget::initComponet()
 {
     QStringList stringList;
-    stringList << "客户资料" << "CRM  " << "知识库";
+    stringList << "客户资料  " << "CRM    " << "知识库  ";
 
     MyButton * myButton;
 

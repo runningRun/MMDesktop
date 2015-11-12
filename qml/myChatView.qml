@@ -6,22 +6,24 @@ Item {
     id: rootRect;
     width: 480;
     height: 560;
-//    color: "#e0e0e0";
+    objectName: "rootItem";
 
     ListModel{
         id:hisoryListViewModel;
+        objectName: "historyListViewModel";
     }
 
     Rectangle
     {
         id: listViewRect;
+        objectName: "listViewRect";
         anchors.top: parent.top;
         anchors.topMargin: 8;
         anchors.left: parent.left;
         anchors.leftMargin: 8;
         anchors.right: parent.right;
         anchors.rightMargin: 8;
-        height: 2 * rootRect.height / 3;
+        height: 3 * rootRect.height / 5;
         radius: 7;
         color: "#EEEEEE";
         border.color: "green";
@@ -29,6 +31,7 @@ Item {
 
         ListView{
             id: historyListView;
+            objectName: "historyListView";
             width: parent.width - 10;
             height: parent.height - 10;
             anchors.centerIn: parent;
@@ -36,6 +39,7 @@ Item {
             clip: true;
             model: hisoryListViewModel;
             delegate: DelegateItemRect{
+                senderName: md_senderName;
                 direction: md_direction;
                 msgType: md_msgtype;
                 msgContent: md_msgContent;
@@ -46,10 +50,114 @@ Item {
         }
     }
 
+    //工具欄框
+    Rectangle
+    {
+        id: toolbarRect;
+        anchors.top: listViewRect.bottom;
+        anchors.topMargin: 4;
+        anchors.left: rootRect.left;
+        anchors.leftMargin: 8;
+        anchors.right: rootRect.right;
+        anchors.rightMargin: 8;
+        border.color: "lightgreen";
+        border.width: 2;
+        radius: 7;
+        width: listViewRect.width;
+        height: 32;
+
+        Image {
+            id: fontImage;
+            source: "res/font.png";
+            anchors.left: toolbarRect.left;
+            anchors.leftMargin: 8;
+            width: 24;
+            height: 24;
+            anchors.verticalCenter: toolbarRect.verticalCenter;
+            MouseArea
+            {
+                anchors.fill: fontImage;
+                hoverEnabled: true;
+                onClicked: {
+                    /*
+                    fileType = 1;
+                    defaultSelsectedNameFilter = "Images Files(*.jpg *.png *.gif)";
+                    fileDialog.open();
+                    msgDirection = 0;
+                    */
+                }
+            }
+        }
+
+        Image {
+            id: pictureImage;
+            source: "res/picture.png";
+            anchors.left: fontImage.right;
+            anchors.leftMargin: 8;
+            width: 24;
+            height: 24;
+            anchors.verticalCenter: toolbarRect.verticalCenter;
+            MouseArea
+            {
+                anchors.fill: pictureImage;
+                hoverEnabled: true;
+                onClicked: {
+                    fileType = 1;
+                    defaultSelsectedNameFilter = "Images Files(*.jpg *.png *.gif)";
+                    fileDialog.open();
+                    msgDirection = 0;
+                }
+            }
+        }
+
+        Image {
+            id: voiceImage;
+            source: "res/voice.png";
+            anchors.left: pictureImage.right;
+            anchors.leftMargin: 8;
+            width: 24;
+            height: 24;
+            anchors.verticalCenter: toolbarRect.verticalCenter;
+            MouseArea
+            {
+                anchors.fill: voiceImage;
+                hoverEnabled: true;
+                onClicked: {
+                    fileType = 2;
+                    defaultSelsectedNameFilter = "Audio Files(*.mp3 *.wav)";
+                    fileDialog.open();
+                    msgDirection = 0;
+                }
+            }
+        }
+
+        Image {
+            id: videoImage;
+            source: "res/video.png";
+            anchors.left: voiceImage.right;
+            anchors.leftMargin: 8;
+            width: 24;
+            height: 24;
+            anchors.verticalCenter: toolbarRect.verticalCenter;
+            MouseArea
+            {
+                anchors.fill: videoImage;
+                hoverEnabled: true;
+                onClicked: {
+                    fileType = 3;
+                    defaultSelsectedNameFilter = "Video Files(*.mp4 *.avi *.wmv)";
+                    fileDialog.open();
+                    msgDirection = 0;
+                }
+            }
+        }
+
+    }
+
     Rectangle
     {
         id: textEditRect;
-        anchors.top: listViewRect.bottom;
+        anchors.top: toolbarRect.bottom;
         anchors.topMargin: 4;
         anchors.left: rootRect.left;
         anchors.leftMargin: 8;
@@ -116,7 +224,7 @@ Item {
                       "All(*.*)"];
         selectedNameFilter: defaultSelsectedNameFilter;
         onAccepted: {
-            finishedPackage(fileType, msgDirection, fileDialog.fileUrl.toString());
+            finishedPackage(agentID, fileType, msgDirection, fileDialog.fileUrl.toString());
         }
 
     }
@@ -134,6 +242,7 @@ Item {
         anchors.bottomMargin: 8;
         radius: 7;
 
+        /*
         Rectangle
         {
             id: leftBtnRect;
@@ -215,6 +324,7 @@ Item {
                 }
             }
         }
+        */
 
         Rectangle
         {
@@ -236,9 +346,9 @@ Item {
                 anchors.topMargin: 10;
                 text: "发送";
                 onClicked: {
-                    finishedPackage(0, 0, edit.text);
+                    finishedPackage(agentID, 0, 0, edit.text);
                 }
-            }
+            }/*
 
             Button
             {
@@ -296,21 +406,44 @@ Item {
                     fileDialog.open();
                     msgDirection = 0;
                 }
+            }*/
+
+            Button
+            {
+                id: endSession;
+                width: (rightBtnRect.width / 4) - 8;
+                height: 0.6 * rightBtnRect.height;
+                anchors.right: rightBtnRect.right;
+                anchors.rightMargin: 10;
+                anchors.top: rightBtnRect.top;
+                anchors.topMargin: 10;
+                text: "結束";
+
+                onClicked:
+                {
+                    sessionHandle.finishSession(sessionID);
+                }
             }
         }
 
     }
 
-    function finishedPackage(msgtype, direction, filePath)
+    function finishedPackage(senderName, msgtype, direction, content)
     {
-        sessionHandle.sendInfo(sessionID, msgtype, filePath)
+        addNewItem2ListView(senderName, msgtype, direction, content);
+        sessionHandle.sendInfo(sessionID, msgtype, content);
+    }
+
+    function addNewItem2ListView(senderName, msgtype, direction, content)
+    {
         switch (msgtype)
         {
         case 0:             //文本
             historyListView.model.append({
+                        "md_senderName": senderName,
                         "md_msgtype": msgtype,
                         "md_direction": direction,
-                        "md_msgContent": edit.text,
+                        "md_msgContent": content,
                         "md_pictureFilePath": "",
                         "md_audioFilePath": "",
                         "md_videoFilePath": ""
@@ -319,10 +452,11 @@ Item {
             break;
         case 1:             //图片
             historyListView.model.append({
+                        "md_senderName": senderName,
                         "md_msgtype": msgtype,
                         "md_direction": direction,
                         "md_msgContent": "",
-                        "md_pictureFilePath": filePath,
+                        "md_pictureFilePath": content,
                         "md_audioFilePath": "",
                         "md_videoFilePath": ""
                     });
@@ -330,30 +464,39 @@ Item {
             break;
         case 2:             //語音
             historyListView.model.append({
+                        "md_senderName": senderName,
                         "md_msgtype": msgtype,
                         "md_direction": direction,
                         "md_msgContent": "",
                         "md_pictureFilePath": "",
-                        "md_audioFilePath": filePath,
+                        "md_audioFilePath": content,
                         "md_videoFilePath": ""
                     });
             edit.text = "";
             break;
         case 3:             //视频
             historyListView.model.append({
+                        "md_senderName": senderName,
                         "md_msgtype": msgtype,
                         "md_direction": direction,
                         "md_msgContent": "",
                         "md_pictureFilePath": "",
                         "md_audioFilePath": "",
-                        "md_videoFilePath": filePath
+                        "md_videoFilePath": content
                     });
             edit.text = "";
             break;
         }
         historyListView.positionViewAtEnd();
-        console.log("in function finishedPackage,filePath: ", filePath);
-        console.error("sessionID", sessionID);
+    }
+
+    Connections
+    {
+        target: sessionHandle;
+        onAddNewItem:{
+            console.log("onAddNewItem, ", newItemContent);
+            addNewItem2ListView(senderName, newItemMsgtype, newItemDirection, newItemContent);
+        }
     }
 }
 

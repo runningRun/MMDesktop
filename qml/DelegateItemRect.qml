@@ -6,6 +6,7 @@ import QtQuick.Window 2.2
 Rectangle{
     id: rootDelegateItem;
 
+    property var senderName: ""
     property var msgContent: "";
     property string pictureFilePath: "";
     property var audioFilePath: "";
@@ -62,27 +63,9 @@ Rectangle{
             anchors.fill: headPortraitRect;
         }
     }
-    //网名标签
-//    Rectangle
-//    {
-//        id: nicknameRect;
-//        anchors.left: headPortrait.right;
-//        anchors.top: headPortrait.top;
-//        anchors.leftMargin: 0 == direction ? -(nicknameTxt.text.paintedWidth+10) : 4;
-//        anchors.margins: 4;
-//        width: nicknameTxt.width;
-//        Text
-//        {
-//            id: nicknameTxt;
-//            text: "testNickname";
-//            color: "blue";
-//            anchors.centerIn: parent;
-//        }
-//    }
-
     Text {
         id: nicknametxt
-        text: "nickname"
+        text: senderName
         width: 100
         clip: true
         height: 20
@@ -220,6 +203,7 @@ Rectangle{
 
 
     property bool pressed: false;
+    property bool audioIsPlaying: false;
     property int duration: 3;
     property int currentImgIndex: -1;
     //語音圖標+語音長度文本
@@ -301,13 +285,32 @@ Rectangle{
         MouseArea
         {
             anchors.fill: audioRect;
+            hoverEnabled: true;
+            onEntered: {
+                cursorShape = Qt.PointingHandCursor;
+            }
+            onExited: {
+                cursorShape = Qt.ArrowCursor;
+            }
+
             onClicked:
             {
                 //启动定时器，动态改变audioImg的图标
                 //播放音频
                 duration = audioPlayer.duration;
-                aduioImgChangeTimer.start();
-                audioPlayer.play();
+                if (!audioIsPlaying)
+                {
+                    aduioImgChangeTimer.start();
+                    audioPlayer.play();
+                    audioIsPlaying = true;
+                }
+                else
+                {
+                    aduioImgChangeTimer.stop();
+                    audioImg.source = "res/ic_voice_pressed.png";
+                    audioPlayer.pause();
+                    audioIsPlaying = false;
+                }
             }
         }
 
@@ -315,13 +318,97 @@ Rectangle{
             duration = audioPlayer.duration;
             pressed = false;
             currentImgIndex = -1;
-
-            console.log("audioPlayer  source:" + audioPlayer.source + "duration: " + audioPlayer.duration);
         }
     }
 
 
     //视频
+//    property bool isVideoPlaying: false;
+//    Rectangle
+//    {
+
+//        id: videoRect;
+//        width: 96;
+//        height: 96;
+//        anchors.left: 0 == direction ? parent.left : headPortraitRect.right;
+//        anchors.leftMargin: (0 == direction) ? (parent.width - width - 60) : 4;
+//        anchors.top: nicknametxt.bottom;
+//        anchors.topMargin: 4;
+//        radius: 5;
+//        color: "#B0E0E6";
+//        border.color: "#00FF7F";
+//        border.width: 2;
+
+//        enabled: 3 == msgType ? true : false;
+//        visible: enabled;
+
+//        Rectangle
+//        {
+//            id: remindMsgRect;
+//            border.color: "#F5DEB3";
+//            border.width: 4;
+//            anchors.verticalCenter:  videoRect.verticalCenter;
+//            anchors.left: videoRect.left;
+//            anchors.leftMargin: 12;
+//            visible: false;
+//            Text
+//            {
+//                id: remindMsg;
+//                color: "#F4A460";
+//                text: "点击播放视频";
+//            }
+//        }
+
+//        MediaPlayer{
+//            id: videoPlayer;
+//            source: videoFilePath;
+
+//            onPlaybackStateChanged:
+//            {
+//                console.log("current playbackState ", playbackState);
+//                if(MediaPlayer.StoppedState == playbackState)
+//                {
+//                    isVideoPlaying = false;
+////                    videoPlayer.destroy();
+//                }
+//            }
+//        }
+
+//        VideoOutput
+//        {
+//            id:videoOutput;
+//            source: videoPlayer;
+//            anchors.fill: parent;
+//        }
+//        MouseArea
+//        {
+//            anchors.fill: videoRect;
+//            hoverEnabled: true;
+
+//            onClicked: {
+//                if (!isVideoPlaying)
+//                {
+//                    videoPlayer.play();
+//                    isVideoPlaying = true;
+//                }
+//                else
+//                {
+//                    videoPlayer.pause();
+//                    isVideoPlaying = false;
+//                }
+//            }
+
+//            onEntered: {
+//                if (!isVideoPlaying)
+//                    remindMsgRect.visible = true;
+//            }
+//            onExited: {
+//                if (!isVideoPlaying)
+//                    remindMsgRect.visible = false;
+//            }
+//        }
+//    }
+
     property bool isVideoPlaying: false;
     Rectangle
     {
@@ -341,6 +428,16 @@ Rectangle{
         enabled: 3 == msgType ? true : false;
         visible: enabled;
 
+        Image
+        {
+            id: videoPlayerIconImg;
+            width: 32;
+            height: 32;
+            source: "res/ic_video_player.png";
+            anchors.horizontalCenter: videoRect.horizontalCenter;
+            anchors.verticalCenter: videoRect.verticalCenter;
+        }
+
         Rectangle
         {
             id: remindMsgRect;
@@ -353,8 +450,8 @@ Rectangle{
             Text
             {
                 id: remindMsg;
-                color: "#F4A460";
-                text: "点击播放视频";
+//                color: "#F4A460";
+//                text: "点击播放视频";
             }
         }
 
@@ -364,11 +461,12 @@ Rectangle{
 
             onPlaybackStateChanged:
             {
-                console.log("current playbackState ", playbackState);
-                if(MediaPlayer.StoppedState == playbackState)
+                if (MediaPlayer.StoppedState == playbackState)
                 {
                     isVideoPlaying = false;
-//                    videoPlayer.destroy();
+                    videoRect.height = 96;
+                    videoRect.width = 96;
+                    videoPlayerIconImg.visible = true;
                 }
             }
         }
@@ -378,34 +476,45 @@ Rectangle{
             id:videoOutput;
             source: videoPlayer;
             anchors.fill: parent;
+            anchors.margins: 4;
         }
         MouseArea
         {
             anchors.fill: videoRect;
             hoverEnabled: true;
-
             onClicked: {
-                if (!isVideoPlaying)
+                if(!isVideoPlaying)
                 {
                     videoPlayer.play();
                     isVideoPlaying = true;
+                    videoPlayerIconImg.visible = false;
+                    videoRect.width = 380;
+                    videoRect.height = 300;
                 }
                 else
                 {
                     videoPlayer.pause();
                     isVideoPlaying = false;
+                    videoPlayerIconImg.visible = true;
+                    videoRect.width = 96;
+                    videoRect.height = 96;
                 }
             }
 
             onEntered: {
+                cursorShape = Qt.PointingHandCursor;
                 if (!isVideoPlaying)
                     remindMsgRect.visible = true;
             }
+
             onExited: {
+                cursorShape = Qt.ArrowCursor;
                 if (!isVideoPlaying)
                     remindMsgRect.visible = false;
             }
+
         }
     }
+
 
 }
