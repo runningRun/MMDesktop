@@ -28,7 +28,7 @@ PanoramaWidget::PanoramaWidget(QWidget *parent) : QWidget(parent)
 void PanoramaWidget::initComponet()
 {
     QStringList stringList;
-    stringList << "客户资料  " << "CRM    " << "知识库  ";
+    stringList << "客户资料" << "CRM  " << "知识库";
 
     MyButton * myButton;
 
@@ -36,6 +36,7 @@ void PanoramaWidget::initComponet()
     for (int i=0; i<stringList.size(); ++i)
     {
         myButton = new MyButton();
+        myButton->setFixedWidth(50);
         myButton->setText(stringList.at(i), TOP2BOTTOM);
         this->m_listMyButton.append(myButton);
         connect(myButton, SIGNAL(clicked()), &m_SigalMapper, SLOT(map()));
@@ -92,6 +93,16 @@ void PanoramaWidget::switchWidget(int index)
     }
     this->m_listMyButton.at(index)->setBtnClicked(true);
 
+}
+
+void PanoramaWidget::showUserInfo(UserID userid)
+{
+    this->m_pCstInfoWidget->loadUserInfo(userid);
+}
+
+void PanoramaWidget::switchUserInfo(UserID userid)
+{
+    this->m_pCstInfoWidget->loadUserInfo(userid);
 }
 
 

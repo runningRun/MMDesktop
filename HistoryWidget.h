@@ -2,6 +2,9 @@
 #define HISTORYWIDGET_H
 
 #include <QWidget>
+#include "common.h"
+
+class QLabel;
 
 class HistoryWidget : public QWidget
 {
@@ -9,6 +12,7 @@ class HistoryWidget : public QWidget
 public:
     explicit HistoryWidget(QWidget *parent = 0);
     ~HistoryWidget();
+    void loadUserHistory(UserID userid);
 
 protected:
     void paintEvent(QPaintEvent* event);
@@ -16,6 +20,9 @@ protected:
 signals:
 
 public slots:
+
+private:
+    QLabel* m_pHistoryLabel;
 
 };
 

@@ -47,6 +47,13 @@ void CustomInfoWidget::initComponet()
 
 }
 
+void CustomInfoWidget::loadUserInfo(UserID userid)
+{
+    this->m_pCstInfoWidget->loadUserInfo(userid);
+    this->m_pHistoryWidget->loadUserHistory(userid);
+}
+
+
 void CustomInfoWidget::switchPage(int index)
 {
     this->m_pCurrentShowWidget->hide();

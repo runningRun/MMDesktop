@@ -1,3 +1,6 @@
+2015.11.16 9:53
+修改PanoramaWidget.* HistoryWidget.* CustomInfoWidget.* CstInfoWidget.*，使其可以根据UserID userid动态载入用户信息
+
 2015.11.12
 代码刚在转移到研究院，目前该部分代码又添加了如下功能
 1. 全景视图，目前的全景视图是一个静态的，还不能动态的调入数据

@@ -7,6 +7,7 @@
 #include <QStackedWidget>
 #include <QSignalMapper>
 #include <QBoxLayout>
+#include "common.h"
 
 class MyButton;
 class HistoryWidget;
@@ -18,6 +19,8 @@ class CustomInfoWidget : public QWidget
 public:
     explicit CustomInfoWidget(QWidget *parent = 0);
     ~CustomInfoWidget();
+
+    void loadUserInfo(UserID userid);
 
 private:
     void initComponet();

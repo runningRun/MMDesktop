@@ -1,5 +1,6 @@
 #include "globalxagentocx.h"
 #include <ActiveQt/QAxWidget>
+#include <QDebug>
 
 GlobalXAgentOCX::GlobalXAgentOCX()
 {
@@ -87,7 +88,22 @@ void GlobalXAgentOCX::retrieve(QString sessionid)
 
 QString GlobalXAgentOCX::uploadFile(QString info)
 {
+    qDebug() << "GlobalXAgentOCX.cpp uplaodFile, info:" <<info;
+    /*
+     *qml中打开文件，会在文件的路径中自动添加"file:///"前缀
+     * 在使用curl上传文件时，只需要文件的路径就可以了，不需要该前缀，
+     * 所以需要在这里先去除该前缀
+     */
+
+    QString prefix = "file:///";
+
+    if (info.startsWith("file:///", Qt::CaseInsensitive))
+    {
+        info.remove(0, prefix.length());
+    }
+    qDebug() << "GlobalXAgentOCX.cpp uplaodFile, info without prefix:" <<info;
      QString fileName = (GlobalXAgentOCX::globalXAgentOCX->dynamicCall("UploadFile(LPCTSTR info)", info)).toString();
+     qDebug() << "GlobalXAgentOCX.cpp uplaodFile, response data:" << fileName;
      if (NULL != fileName)
          return fileName;
      else

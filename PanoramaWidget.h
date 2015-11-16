@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QList>
 #include <QSignalMapper>
+#include "common.h"
+
+
 
 class MyButton;
 class QVBoxLayout;
@@ -22,6 +25,8 @@ public:
     explicit PanoramaWidget(QWidget *parent = 0);
     ~PanoramaWidget();
 
+    void showUserInfo(UserID userid);
+
 protected:
     void initComponet();
     void paintEvent(QPaintEvent*);
@@ -32,6 +37,7 @@ public slots:
 
 private slots:
     void switchWidget(int index);               //切换显示窗口
+    void switchUserInfo(UserID userid);         //切换显示的用户信息
 
 private:
     QList<MyButton* > m_listMyButton;           //存放功能列表
