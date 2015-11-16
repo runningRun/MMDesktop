@@ -104,6 +104,7 @@ void SessionHandle::addNewItemFunc(QString newItemContent)
     QString endTag = "</msgtype>";
     QString msgtype = "";
     QString msg = "";
+    QString fileName = "";
     int imsgtype = -1;
     int startIndex = newItemContent.indexOf(startTag) + startTag.length();
     int endIndex = newItemContent.indexOf(endTag);
@@ -142,7 +143,12 @@ void SessionHandle::addNewItemFunc(QString newItemContent)
         startIndex = newItemContent.indexOf(startTag) + startTag.length();
         endIndex = newItemContent.indexOf(endTag);
         msg = newItemContent.mid(startIndex, endIndex - startIndex);
-        msg = GlobalXAgentOCX::instance()->downloadFile(msg);
+        startIndex = msg.indexOf("/", -1);
+        fileName = msg.mid(startIndex, -1);
+        msg = GlobalXAgentOCX::instance()->downloadFile(fileName);
+        msg.replace('\\', "/");
+        msg = "file:///" + msg;
+        break;
     default:
         break;
     }

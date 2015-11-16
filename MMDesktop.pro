@@ -45,7 +45,8 @@ HEADERS  += \
     KnowledgeBaseWidget.h \
     CRMWidget.h \
     CstInfoWidget.h \
-    HistoryWidget.h
+    HistoryWidget.h \
+    common.h
 
 FORMS    += \
     logindialog.ui \

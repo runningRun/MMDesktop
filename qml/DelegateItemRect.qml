@@ -144,6 +144,7 @@ Rectangle{
 
         MouseArea
         {
+            /*
             anchors.fill: pictureRect;
             onDoubleClicked: {
                 var componentWindow = Qt.createComponent("test.qml");
@@ -151,8 +152,8 @@ Rectangle{
                 componentWindow.createObject
                 componentWindow.show();
             }
-/*            onDoubleClicked: {
-                var str = 'import QtQuick 2.4;
+            onDoubleClicked: {
+               var str = 'import QtQuick 2.4;
                import QtQuick.Window 2.2;
                Window{
                    id: imageShowWindow;

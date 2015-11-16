@@ -1,3 +1,8 @@
+2015.11.16 18:27
+修改了以下部分：
+1.实现了当前显示的QQuickWidget窗口与客户信息同步的功能
+2.修改了SessionHandle中的加载客户发来的图片、语音、视频部分的代码
+
 2015.11.16 9:53
 修改PanoramaWidget.* HistoryWidget.* CustomInfoWidget.* CstInfoWidget.*，使其可以根据UserID userid动态载入用户信息
 

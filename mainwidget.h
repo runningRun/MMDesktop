@@ -2,6 +2,7 @@
 #define MAINWIDGET_H
 
 #include "mmdbasewidget.h"
+#include "common.h"
 
 struct UserInfo;
 class QWidget;
@@ -72,6 +73,9 @@ private slots:
     void PushButtonReay_NOTClicked();
     void PushButtonHookoff_releaseClicked();
     void PushButtonHold_retiveClicked();
+
+    void switchCustomerInfo(QQuickWidget* prevoiusShowQuickWidget, QQuickWidget* currentShowQuickWidget);
+
 private:
     Ui::MainWidget *ui;
     AGENT_STATUS m_agentState;

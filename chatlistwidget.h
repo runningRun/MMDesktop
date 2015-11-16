@@ -33,6 +33,7 @@ private:
 signals:
     void createNewTreeWidgetItem(QTreeWidgetItem* item, QString sessionid);
     void signalTreeWidgetItemClicked(QTreeWidgetItem* item, int column);
+    void signalCurrentShowQuickWidgetChanged(QQuickWidget* previous, QQuickWidget* current);
 private slots:
     void treeWidgetItemClicked(QTreeWidgetItem *item, int column);
     void currentTreeWidgetItemChanged(QTreeWidgetItem* currentItem, QTreeWidgetItem* previousItem);

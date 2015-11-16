@@ -28,6 +28,8 @@ void CstInfoWidget::loadUserInfo(UserID userid)
 {
     this->m_pHistoryPugLabel->setText("此处应显示客户"+ userid + "的历史足迹");
     this->m_pInfoLabel->setText("此处应显示客户" + userid + "的信息");
+    this->m_pHistoryPugLabel->adjustSize();
+    this->m_pInfoLabel->adjustSize();
 }
 
 CstInfoWidget::~CstInfoWidget()

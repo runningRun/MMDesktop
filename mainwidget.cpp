@@ -46,6 +46,10 @@ MainWidget::MainWidget(MMDBaseWidget *parent) :
 
     connect(this->m_pChatListWidget, SIGNAL(createNewTreeWidgetItem(QTreeWidgetItem*, QString)),
                      this, SLOT(ChatListWidgetAddedNewTreeWidgetItem(QTreeWidgetItem*, QString)));
+
+    connect(this->m_pChatListWidget, SIGNAL(signalCurrentShowQuickWidgetChanged(QQuickWidget*,QQuickWidget*)),
+            this, SLOT(switchCustomerInfo(QQuickWidget*,QQuickWidget*)));
+
     connect(this->ui->toolButtonLogin_out, SIGNAL(clicked()),
             this, SLOT(PushButtonLogin_outClicked()));
     connect(this->ui->toolButtonReady_NOT, SIGNAL(clicked()),
@@ -209,6 +213,20 @@ void MainWidget::timerHookoffBtnChangeBgClrTimeout()
         break;
     }
     this->ui->toolButtonHookOff_release->setStyleSheet(backgroundColor[currentHookoffBtnBgClr]);
+}
+
+void MainWidget::switchCustomerInfo(QQuickWidget* prevoiusShowQuickWidget, QQuickWidget* currentShowQuickWidget)
+{
+    if (NULL == currentShowQuickWidget)
+        this->ui->widget->showUserInfo((UserID)"");
+    else
+    {
+        QString sessionid;
+        QTreeWidgetItem* item = this->m_pMapTWI_QuickWidget->key(currentShowQuickWidget);
+        sessionid = this->m_pMapSessionid_TWI->key(item);
+        UserInfo* userInfo = this->m_pMapSession_UserInfo->value(sessionid);
+        this->ui->widget->showUserInfo((UserID)userInfo->thisDN);
+    }
 }
 
 void MainWidget::receiveSubjectNotify(EventID eventID, QString eventInfo)
@@ -570,6 +588,9 @@ void MainWidget::sessionEnd(QString sessionid)
     delete sessionHandle;
 
     this->m_pChatListWidget->deleteQuickWidget(item);
+
+    this->ui->widget->showUserInfo("");
+
     delete item;
 }
 

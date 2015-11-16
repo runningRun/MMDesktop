@@ -15,6 +15,7 @@ ChatListWidget::ChatListWidget(QWidget *parent)
     this->m_pTimerChangeItemBgColor = new QTimer(this);
     this->m_pListHavingNewMsgTwi = new QList<QTreeWidgetItem*>();
     this->m_pCurrentShowQuickWidget = NULL;
+    emit signalCurrentShowQuickWidgetChanged(NULL, NULL);
 
     //初始化ChatListTreeWidget
     this->m_pChatListTreeWidget->setColumnCount(1);
@@ -91,12 +92,14 @@ void ChatListWidget::createNewTreeWidgetItem(UserInfo *userInfo)
     this->m_pChatListTreeWidget->expandItem(parent);
     newChildItem->setSelected(true);
 
+    QQuickWidget* previousShowCurrentWidget = this->m_pCurrentShowQuickWidget;
     if (NULL != this->m_pCurrentShowQuickWidget)
     {
         this->m_pCurrentShowQuickWidget->hide();
     }
     this->m_pCurrentShowQuickWidget = this->m_pMapTWI_QuickWidget->value(newChildItem);
     this->m_pCurrentShowQuickWidget->show();
+    emit signalCurrentShowQuickWidgetChanged(previousShowCurrentWidget, this->m_pCurrentShowQuickWidget);
 }
 
 QTreeWidgetItem* ChatListWidget::createTreeWidgetItem(QTreeWidget *parent, QStringList stringList)
@@ -125,6 +128,7 @@ QQuickWidget* ChatListWidget::currentShowQuickWidget()
 void ChatListWidget::treeWidgetItemClicked(QTreeWidgetItem *item, int column)
 {
     QTreeWidgetItem *parent = item->parent();
+    QQuickWidget* previousQuickWidget = this->m_pCurrentShowQuickWidget;
     if (NULL == parent)
     {
         if (!item->isExpanded())
@@ -137,7 +141,7 @@ void ChatListWidget::treeWidgetItemClicked(QTreeWidgetItem *item, int column)
     {
         this->m_pCurrentShowQuickWidget = this->m_pMapTWI_QuickWidget->value(item);
         this->m_pCurrentShowQuickWidget->show();
-        return ;
+        emit signalTreeWidgetItemClicked(item, column);
     }
     else
     {
@@ -152,6 +156,7 @@ void ChatListWidget::treeWidgetItemClicked(QTreeWidgetItem *item, int column)
     {
         this->m_pListHavingNewMsgTwi->removeOne(item);
     }
+    emit signalCurrentShowQuickWidgetChanged(previousQuickWidget, this->m_pCurrentShowQuickWidget);
 }
 
 void ChatListWidget::currentTreeWidgetItemChanged(QTreeWidgetItem *currentItem, QTreeWidgetItem *previousItem)
@@ -215,7 +220,11 @@ void ChatListWidget::deleteQuickWidget(QTreeWidgetItem *item)
     QQuickWidget* quickWidget = this->m_pMapTWI_QuickWidget->value(item);
     this->m_pMapTWI_QuickWidget->remove(item);
     if (this->m_pCurrentShowQuickWidget == quickWidget)
+    {
+        QQuickWidget* previousQuickWidget = this->m_pCurrentShowQuickWidget;
         this->m_pCurrentShowQuickWidget = NULL;
+        emit signalCurrentShowQuickWidgetChanged(previousQuickWidget, this->m_pCurrentShowQuickWidget);
+    }
 }
 
 void ChatListWidget::notifyHavingNewMessage(QTreeWidgetItem *item)

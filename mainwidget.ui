@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1174</width>
-    <height>749</height>
+    <height>643</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -26,24 +26,6 @@
      <height>540</height>
     </rect>
    </property>
-   <widget class="QTreeWidget" name="treeWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>161</width>
-      <height>540</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: &quot;transparent&quot;;</string>
-    </property>
-    <column>
-     <property name="text">
-      <string>会话列表</string>
-     </property>
-    </column>
-   </widget>
   </widget>
   <widget class="QWidget" name="widgetChatWidget" native="true">
    <property name="geometry">
@@ -70,8 +52,6 @@
      <enum>QQuickWidget::SizeRootObjectToView</enum>
     </property>
    </widget>
-   <zorder>quickWidget</zorder>
-   <zorder>treeWidget</zorder>
   </widget>
   <widget class="QWidget" name="widgetStatistic" native="true">
    <property name="geometry">
@@ -604,7 +584,6 @@
      <height>541</height>
     </rect>
    </property>
-   <zorder>quickWidget</zorder>
   </widget>
   <widget class="QWidget" name="widget_2" native="true">
    <property name="geometry">
@@ -702,19 +681,12 @@
     </property>
    </widget>
   </widget>
-  <zorder>widgetChatList</zorder>
-  <zorder>widgetChatWidget</zorder>
-  <zorder>widgetStatistic</zorder>
-  <zorder>widget</zorder>
-  <zorder>widget_2</zorder>
-  <zorder>treeWidget</zorder>
-  <zorder>quickWidget</zorder>
  </widget>
  <customwidgets>
   <customwidget>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
-   <header>QQuickWidget</header>
+   <header>QtQuickWidgets/QQuickWidget</header>
   </customwidget>
   <customwidget>
    <class>PanoramaWidget</class>

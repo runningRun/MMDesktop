@@ -10,6 +10,7 @@ HistoryWidget::HistoryWidget(QWidget *parent) : QWidget(parent)
 void HistoryWidget::loadUserHistory(UserID userid)
 {
     this->m_pHistoryLabel->setText("暂无用户" + userid + "的历史信息");
+    this->m_pHistoryLabel->adjustSize();
 }
 
 void HistoryWidget::paintEvent(QPaintEvent *event)
