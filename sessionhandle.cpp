@@ -137,7 +137,12 @@ void SessionHandle::addNewItemFunc(QString newItemContent)
         break;
     case 1:
     case 2:
-    case 3:
+    case 3:						
+    	/*
+		 * zwl
+		 *2015.11.16
+		 *完善加载来自客户的图片、语音、视频功能
+    	 */
         startTag = "<url>";
         endTag = "</url>";
         startIndex = newItemContent.indexOf(startTag) + startTag.length();
