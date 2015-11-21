@@ -1,3 +1,5 @@
+2015.11.21
+添加了上传下载线程，UploadFileThread.*和DownloadFileThread.* 并在sessionhandle.*中做了相应修改
 2015.11.16 18:27
 修改了以下部分：
 1.实现了当前显示的QQuickWidget窗口与客户信息同步的功能

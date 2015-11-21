@@ -72,12 +72,13 @@ void MMDesktopApp::messageClicked()
     QString strDate = QDateTime::currentDateTime().toString("yyyy-MM-dd HH:mm:ss");
     QString Content = "";
     Content += "<xml>";
+    Content += "<group>1</group>";
     Content += "<from>" + AgentInfo::agentThisDN + "</from>";
     Content += "<to>" + m_from + "</to>";
     Content += "<via>" + m_via + "</via>";
     Content += "<time>" + strDate + "</time>";
     Content += "<msgtype>01</msgtype>";
-    Content += "<isAgent>true<isAgent>";
+    Content += "<isAgent>true</isAgent>";
     Content += "<title></title>";
     Content += "<content>您好，2005号坐席为您服务，请问您有什么需要帮助的吗？</content>";
     Content += "<url></url>";

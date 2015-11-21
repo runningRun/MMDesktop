@@ -27,7 +27,9 @@ SOURCES += main.cpp\
     KnowledgeBaseWidget.cpp \
     CRMWidget.cpp \
     CstInfoWidget.cpp \
-    HistoryWidget.cpp
+    HistoryWidget.cpp \
+    UploadFileThread.cpp \
+    DownloadFileThread.cpp
 
 HEADERS  += \
     globalxagentocx.h \
@@ -46,7 +48,9 @@ HEADERS  += \
     CRMWidget.h \
     CstInfoWidget.h \
     HistoryWidget.h \
-    common.h
+    common.h \
+    UploadFileThread.h \
+    DownloadFileThread.h
 
 FORMS    += \
     logindialog.ui \

@@ -14,9 +14,9 @@ struct UserInfo
 enum MSGTYPE
 {
     TEXT = 1,
-    PICTURE = 2,
-    VOICE = 3,
-    VIDEO = 4
+    VOICE = 2,
+    VIDEO = 3,
+    PICTURE = 4
 };
 
 enum EventID {

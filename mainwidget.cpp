@@ -27,9 +27,6 @@ MainWidget::MainWidget(MMDBaseWidget *parent) :
     ui->setupUi(this);
 
     this->ui->lineEditAgentID_2->setText(AgentInfo::agentID);
-//    this->ui->lineEditAgentName->setText(AgentInfo::agentName);
-//    this->ui->lineEditAgentNameGroupID->setText(AgentInfo::agentGroupID);
-//    this->ui->lineEditAgentThisDN->setText(AgentInfo::agentThisDN);
 
     this->m_pChatListWidget = new ChatListWidget(this->ui->widgetChatList);
     this->m_pMapSessionid_TWI = new QMap<QString, QTreeWidgetItem*>();
@@ -60,7 +57,7 @@ MainWidget::MainWidget(MMDBaseWidget *parent) :
             this, SLOT(PushButtonHookoff_releaseClicked()));
     connect(this->ui->toolButtonHold_retrive, SIGNAL(clicked()),
             this, SLOT(PushButtonHold_retiveClicked()));
-    this->m_pChatListWidget->Load();
+//    this->m_pChatListWidget->Load();
 
     this->m_pAgentOCX = GlobalXAgentOCX::instance();
     this->m_pAgentOCX->addObserver(this);    
